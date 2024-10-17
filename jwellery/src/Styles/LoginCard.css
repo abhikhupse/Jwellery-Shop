@@ -1,0 +1,141 @@
+.card {
+  width: 400px;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  display: none; /* Hide initially */
+}
+.card.show {
+  display: flex; /* Show card when the "show" class is added */
+}
+
+.card-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #555555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-icon:hover {
+  color: #36d1dc;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555555;
+  transition: color 0.3s ease;
+}
+
+.input {
+  width: 90%;
+  height: 45px;
+  background-color: #f3f4f6;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #5b86e5;
+  box-shadow: 0 0 10px rgba(91, 134, 229, 0.3);
+}
+
+.input-group:hover .label,
+.input:focus ~ .label {
+  color: #5b86e5;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(135deg, #5b86e5, #36d1dc);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(91, 134, 229, 0.3);
+}
+
+.register-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #555555;
+  text-align: center;
+}
+
+.register-link a {
+  color: #5b86e5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #36d1dc;
+  cursor: pointer;
+}
+
+/* Keyframes for sliding effect */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}

@@ -1,0 +1,117 @@
+.catagory_head {
+  font-size: 2.5rem; /* Increase font size */
+  font-weight: 700; /* Increase font weight */
+  text-align: center; /* Center the heading */
+  margin-bottom: 4px; /* Further reduced space below the heading */
+  color: #333;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px; /* Space for underline */
+}
+
+.catagory_head::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(
+    135deg,
+    #ff7e5f,
+    #feb47b
+  ); /* Gradient underline */
+  display: block;
+  margin: 10px auto 0; /* Center the underline */
+  border-radius: 2px;
+}
+
+.catagory_head {
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.container2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  margin-bottom: 70px; /* Increased bottom margin for more space */
+}
+
+.category {
+  position: relative;
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.category:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.catagory_name {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.catagory_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.category:hover .catagory_img {
+  filter: brightness(100%);
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 126, 95, 0.7),
+    rgba(254, 180, 123, 0.7)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.category:hover .overlay {
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .category {
+    height: 250px;
+  }
+
+  .catagory_name {
+    font-size: 1.2rem;
+    bottom: 15px;
+    left: 15px;
+  }
+
+  .container2 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
