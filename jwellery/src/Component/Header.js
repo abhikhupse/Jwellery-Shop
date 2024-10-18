@@ -1,3 +1,4 @@
+// src/Component/Header.js
 import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Link } from "react-router-dom";
@@ -12,11 +13,16 @@ import {
   FaSearch,
   FaShoppingCart,
   FaUser,
-  FaEllipsisV, // Importing the ellipsis icon
+  FaEllipsisV,
 } from "react-icons/fa";
 import "../Styles/Header.css"; // Ensure you have the correct path for your CSS
 
-const Header = ({ isLoggedIn, onLoginClick, handleLogout }) => {
+const Header = ({
+  isLoggedIn,
+  onLoginClick,
+  handleLogout,
+  onAdminLoginClick,
+}) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showAdminMenu, setShowAdminMenu] = useState(false); // State for admin menu
 
@@ -180,19 +186,14 @@ const Header = ({ isLoggedIn, onLoginClick, handleLogout }) => {
             <Link to="/cart" aria-label="Cart">
               <FaShoppingCart />
             </Link>
-
-            {/* Conditionally render admin dots only if not logged in */}
-            {!isLoggedIn && (
-              <span className="admin-dots" onClick={toggleAdminMenu}>
-                <FaEllipsisV />
-              </span>
-            )}
-
-            {showAdminMenu && !isLoggedIn && (
+            <FaEllipsisV
+              className="menu-icon"
+              onClick={toggleAdminMenu}
+              aria-label="Menu"
+            />
+            {showAdminMenu && (
               <ul className="admin-dropdown">
-                <li>
-                  <Link to="/admin-login">Admin Login</Link>
-                </li>
+                <li onClick={onAdminLoginClick}>Admin Login</li>
               </ul>
             )}
           </div>

@@ -1,43 +1,20 @@
+// ProductList.js
 import React from "react";
-import "../Styles/ProductList.css"; // Importing external CSS file if needed
-import productImage from "../CatagoriesImages/pr2j0_1200.jpg";
+import "../Styles/ProductList.css"; // Make sure the path is correct
 
-const ProductList = () => {
-  const products = [
-    {
-      title: "Diamond Ring",
-      price: 250,
-      image: productImage,
-    },
-    {
-      title: "Gold Necklace",
-      price: 350,
-      image: productImage,
-    },
-    {
-      title: "Smartphone",
-      price: 650,
-      image: productImage,
-    },
-    {
-      title: "Smartphone",
-      price: 650,
-      image: productImage,
-    },
-  ];
-
+const ProductList = ({ products }) => {
   return (
     <main>
-      <section className="product-grid-container">
+      <section className="productListContainer123">
         {products.map((product, index) => (
-          <div className="product-item" key={index}>
-            <div className="product-image-wrapper">
-              <img src={product.image} alt="Product Image" />
+          <div className="productCard456" key={index}>
+            <div className="productImageContainer789">
+              <img src={product.image} alt={`${product.title} Image`} />
             </div>
-            <div className="product-details-wrapper">
-              <h2 className="product-title">{product.title}</h2>
-              <p className="product-price">₹{product.price}</p>
-              <button className="add-to-cart-button">Add to Cart</button>
+            <div className="productDetailsContainer101112">
+              <h2 className="productTitle131415">{product.title}</h2>
+              <p className="productPrice161718">₹{product.price}</p>
+              <button className="addToCartButton192021">Add to Cart</button>
             </div>
           </div>
         ))}

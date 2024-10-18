@@ -1,0 +1,89 @@
+.admin-header {
+  background-color: #444; /* Change to a distinct color for admin */
+  color: white;
+  padding: 15px 0;
+}
+
+.admin-header .logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* General navigation styles for admin */
+.admin-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.admin-header nav li {
+  position: relative;
+  margin-right: 20px;
+}
+
+.admin-header nav a,
+.admin-header nav div {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer; /* Make div clickable */
+}
+
+.admin-header nav a:hover,
+.admin-header nav div:hover {
+  color: #ddd;
+}
+
+/* Dropdown menu styles */
+.admin-header .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #555; /* Match the admin background color */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 10px 0;
+  z-index: 1000;
+  min-width: 200px;
+  border-radius: 5px;
+}
+
+.admin-header nav li:hover .dropdown {
+  display: block;
+}
+
+.admin-header .dropdown li {
+  margin: 0;
+}
+
+.admin-header .dropdown a {
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.admin-header .dropdown a:hover {
+  background-color: #666;
+  color: #ddd;
+}
+
+.logout-button {
+  background-color: #d9534f; /* Change the background color for visibility */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c9302c; /* Darker shade on hover */
+}

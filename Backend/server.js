@@ -5,6 +5,8 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 // Load environment variables
 dotenv.config();
@@ -21,9 +23,16 @@ const store = new MongoDBStore({
 // Initialize the Express application
 const app = express();
 
-// Middleware for JSON parsing and CORS
-app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+// Middleware for JSON parsing with increased payload limit and CORS
+app.use(express.json({ limit: "10mb" })); // Allow payloads up to 10MB
+app.use(express.urlencoded({ limit: "10mb", extended: true })); // Handle URL-encoded data
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Allow requests from React frontend
+    credentials: true, // Allow sending cookies and headers
+  })
+);
 
 // Session middleware configuration
 app.use(
@@ -42,11 +51,13 @@ app.use(
 
 // Routes
 app.use("/api/user", userRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/products", productRoutes); // Changed to "/api/products" for better structure
 
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err); // Log the error for debugging
-  res.status(500).json({ message: err.message });
+  res.status(err.status || 500).json({ message: err.message });
 });
 
 // Start the server
