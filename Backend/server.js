@@ -7,6 +7,9 @@ const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const productRoutes = require("./routes/productRoutes");
+const cartRoutes = require("./routes/cartRoutes");
+const addressRoutes = require("./routes/addressRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
 
 // Load environment variables
 dotenv.config();
@@ -53,6 +56,9 @@ app.use(
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/products", productRoutes); // Changed to "/api/products" for better structure
+app.use("/api/cart", cartRoutes);
+app.use("/api/address", addressRoutes);
+app.use(paymentRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

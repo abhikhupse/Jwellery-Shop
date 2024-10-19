@@ -23,12 +23,34 @@ const Address = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can handle the address submission
     console.log("Address submitted:", address);
-    // Navigate to the Payment page, passing the cart items
-    navigate("/payment", { state: { cart } });
+
+    try {
+      // Assuming you have the userId available
+      const userId = "6490fda4a5830c36f5d55f4d"; // Replace with actual user ID from your state/context
+
+      const response = await fetch("http://localhost:5000/api/address/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: userId, // Use the actual user ID
+          ...address, // Spread address fields (name, street, city, etc.)
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message); // Optional: Show success message
+        // Navigate to payment only after successful saving of address
+        navigate("/payment", { state: { cart } });
+      } else {
+        console.error("Failed to save address");
+      }
+    } catch (error) {
+      console.error("Error saving address:", error);
+    }
   };
 
   return (

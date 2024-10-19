@@ -27,9 +27,11 @@ const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    res
-      .status(201)
-      .json({ success: true, message: "User registered successfully" });
+    res.status(201).json({
+      success: true,
+      message: "User registered successfully",
+      userId: user.userId, // Include userId in the response
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -50,11 +52,20 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { id: user._id, userId: user.userId },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
 
-    res.status(200).json({ success: true, token, message: "Login successful" });
+    res.status(200).json({
+      success: true,
+      token,
+      message: "Login successful",
+      userId: user.userId, // Include userId in the response
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
